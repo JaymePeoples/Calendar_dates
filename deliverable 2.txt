@@ -1,0 +1,31 @@
+import java.io.PrintStream;
+import java.time.LocalDate;//Date object viewed as day, month and year
+import java.time.Period; //use with Period.between to get difference in certain period
+import java.util.Scanner;
+
+class DateOperations {
+    public static void main(String[] args) {
+        Scanner scnr = new Scanner(System.in);
+        int year1, year2, month1, month2, day1, day2 = 0; //entering each number to compare
+        System.out.println("Enter the first date: (format m d yyyy)"); //enter each number separated by a space
+
+        month1 = scnr.nextInt();
+        day1 = scnr.nextInt();
+        year1 = scnr.nextInt();
+
+        System.out.println("Enter the second date: (format m d yyyy)");//Enter each number separated by a space
+
+        month2 = scnr.nextInt();
+        day2 = scnr.nextInt();
+        year2 = scnr.nextInt();
+
+
+        LocalDate date1 = LocalDate.of(year1, month1, day1);
+        LocalDate date2 = LocalDate.of(year2, month2, day2);
+
+        Period time = Period.between(date1, date2);//Will calculate the date between, but will include negative values
+        PrintStream printf = System.out.printf("It has been %d years, %d months, and %d days.%n ",
+                time.getYears(), time.getMonths(), time.getDays()); /*% I'm not 100% why the % sign works yet, but I
+                        believe that it makes the integer even and carries over anything remaining to the next int */
+    }
+    }
